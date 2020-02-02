@@ -1,0 +1,61 @@
+<div class="container" mt-2>
+    <h1>Template driven forms</h1>
+
+<form (ngSubmit)="fun(inputs.value)" #inputs="ngForm">
+    <div class="from-group">
+    <label>FirstName</label>
+    <input type="text" name="fname" ngModel #fname="ngModel" class="form-control" required>
+    <p *ngIf="!fname.valid && fname.touched">Field required</p>
+    </div>
+
+    <div class="form-group">
+        <label>LastName</label>
+        <input type="text" name="lname" ngModel #lname="ngModel"  class="form-control" required>
+        <p *ngIf="!lname.valid && lname.touched">Field Required</p>
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" ngModel #email="ngModel" class="form-control" required email>
+        <p *ngIf="!email.valid && email.touched">Field Required</p>
+    </div>
+    
+    <div class="form-group">
+        <label>Course</label>
+        <select class="form-control" name="course" ngModel #course="ngModel" required>
+            <option>Select course</option>
+            <option>HTML</option>
+            <option>CSS</option>
+        </select>
+        <p *ngIf="!course.valid && course.touched">Field Required</p>
+    </div>
+    <button type="submit" [disabled]="!inputs.valid" name="btn" value="submit" class="btn btn-danger">Submit</button>
+</form>
+
+<table class="table mt-4">
+    <thead>
+        <tr>
+            
+            <th scope="col">FirstName</th>
+            <th scope="col">LastName</th>
+            <th scope="col">Email</th>
+            <th scope="col">Course</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of b">
+            
+            <td>{{c.fname}}</td>
+            <td>{{c.lname}}</td>
+            <td>{{c.email}}</td>
+            <td>{{c.course}}</td>
+        </tr>
+        
+    </tbody>
+</table>
+
+
+
+
+
+
+</div>
